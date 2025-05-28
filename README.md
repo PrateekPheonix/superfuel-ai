@@ -30,6 +30,7 @@ Copy `.env.example` to `.env` and provide a `DATABASE_URL` with your connection 
 Run an initial database migration:
 
 ```bash
+npm run db:generate
 npm run db:migrate
 ```
 
