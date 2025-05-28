@@ -12,13 +12,17 @@ export default function Snippets() {
   return (
     <div className="min-h-screen bg-gray-50 p-6">
       <div className="max-w-4xl mx-auto p-4">
-        <div className="flex justify-between items-center">
+        <div className="flex items-center justify-between">
           <h1 className="text-3xl font-bold text-gray-900">Snippets</h1>
-          <Button variant="outline" asChild>
-            <Link to="/snippets/new">New Snippet</Link>
-          </Button>
+          <div className="flex gap-4">
+            <Button variant="default" asChild>
+              <Link to="/snippets/new">New Snippet</Link>
+            </Button>
+            <Button variant="outline" asChild>
+              <Link to="/">Home</Link>
+            </Button>
+          </div>
         </div>
-        <div className="mt-8 space-y-6"></div>
       </div>
       {snippets.length === 0 && (
         <div className="mt-8 space-y-6">
@@ -38,8 +42,7 @@ export default function Snippets() {
                     className="text-gray-900 text-l"
                     to={`/snippets/${snippet.id}`}
                   >
-                    {index + 1}.{" "}
-                    <span className="text-gray-800">{snippet.name}</span>
+                    {snippet.name}
                   </Link>
                 </Button>
               </li>
