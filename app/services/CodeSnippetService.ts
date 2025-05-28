@@ -3,7 +3,7 @@ import { codeSnippets } from "../../database/schema";
 import { desc, eq } from "drizzle-orm";
 
 export class CodeSnippetService {
-  async create(snippet: NewCodeSnippet) {
+  static async create(snippet: NewCodeSnippet) {
     const newCodeSnippet = await db
       .insert(codeSnippets)
       .values(snippet)
@@ -11,7 +11,7 @@ export class CodeSnippetService {
     return newCodeSnippet[0];
   }
 
-  async getAll() {
+  static async getAll() {
     const snippets = await db
       .select()
       .from(codeSnippets)
@@ -19,7 +19,7 @@ export class CodeSnippetService {
     return snippets;
   }
 
-  async getById(id: number) {
+  static async getById(id: number) {
     const snippet = await db
       .select()
       .from(codeSnippets)
@@ -27,7 +27,7 @@ export class CodeSnippetService {
     return snippet[0];
   }
 
-  async update(id: number, snippet: Partial<NewCodeSnippet>) {
+  static async update(id: number, snippet: Partial<NewCodeSnippet>) {
     const updatedSnippet = await db
       .update(codeSnippets)
       .set({ ...snippet, updatedAt: new Date() })
@@ -37,14 +37,14 @@ export class CodeSnippetService {
     return updatedSnippet[0];
   }
 
-  async delete(id: number) {
+  static async delete(id: number) {
     return await db
       .delete(codeSnippets)
       .where(eq(codeSnippets.id, id))
       .returning();
   }
 
-  async updateOutput(id: number, output: string) {
+  static async updateOutput(id: number, output: string) {
     return await db
       .update(codeSnippets)
       .set({ output })

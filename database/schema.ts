@@ -10,7 +10,7 @@ export const codeSnippets = pgTable("codeSnippet", {
   id: integer().primaryKey().generatedAlwaysAsIdentity(),
   name: varchar({ length: 255 }).notNull(),
   code: text().notNull(),
-  output: text().notNull(),
+  output: text().notNull().default(""),
   createdAt: timestamp().notNull().defaultNow(),
   updatedAt: timestamp().notNull().defaultNow(),
 });

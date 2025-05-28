@@ -9,6 +9,7 @@ async function migrateDb() {
     process.exit(1);
   } finally {
     await migrateClient.end();
+    process.exit(0);
   }
 }
 
